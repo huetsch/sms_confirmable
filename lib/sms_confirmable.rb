@@ -14,6 +14,7 @@ end
 module SmsConfirmable
 end
 
-Devise.add_module :sms_confirmable, :model => 'sms_confirmable/models/sms_confirmable', :controller => :confirmable, :route => :confirmable
+#Devise.add_module :sms_confirmable, :model => 'sms_confirmable/models/sms_confirmable', :controller => :confirmable, :route => :confirmable
+Devise.add_module :sms_confirmable, :model => 'sms_confirmable/models/sms_confirmable'
 
 require 'sms_confirmable/models/sms_confirmable'
