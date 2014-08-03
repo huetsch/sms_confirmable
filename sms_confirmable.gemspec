@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "sms_confirable/version"
+require "sms_confirmable/version"
 
 Gem::Specification.new do |s|
   s.name        = "sms_confirmable"
