@@ -154,9 +154,9 @@ module Devise
         # Generates a new random token for confirmation, and stores
         # the time this token is being generated
         def generate_confirmation_token
-          raw, enc = Devise.token_generator.generate(self.class, :confirmation_token)
-          @raw_confirmation_token   = raw
-          self.confirmation_token   = enc
+          #raw, enc = Devise.token_generator.generate(self.class, :confirmation_token)
+          @raw_confirmation_token = String(100000 + Random.rand(1000000 - 100000))
+          self.confirmation_token = @raw_confirmation_token
           self.confirmation_sent_at = Time.now.utc
         end
 
@@ -207,12 +207,13 @@ module Devise
         # If the user is already confirmed, create an error for the user
         # Options must have the confirmation_token
         def confirm_by_token(confirmation_token)
-          original_token     = confirmation_token
-          confirmation_token = Devise.token_generator.digest(self, :confirmation_token, confirmation_token)
+          #original_token     = confirmation_token
+          #confirmation_token = Devise.token_generator.digest(self, :confirmation_token, confirmation_token)
 
           confirmable = find_or_initialize_with_error_by(:confirmation_token, confirmation_token)
           confirmable.confirm! if confirmable.persisted?
-          confirmable.confirmation_token = original_token
+          #confirmable.confirmation_token = original_token
+          confirmable.confirmation_token = confirmation_token
           confirmable
         end
 
